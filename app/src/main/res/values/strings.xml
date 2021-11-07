@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SharedPreferencesApp</string>
+    <string name="enter_your_fullname">Enter your Fullname</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="login_page">Login Page</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="logout">Logout</string>
+</resources>
