@@ -10,4 +10,5 @@ object Constants {
     const val userName = "userName"
     const val fullName = "fullName"
     const val password = "password"
+    const val LOG_FILE_NAME="androidTestLog.txt"
 }

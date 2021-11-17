@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.example.sharedpreferencesapp.utils.Constants
+import com.example.sharedpreferencesapp.utils.FileFunctions
 import com.example.sharedpreferencesapp.utils.SharedPreferenceUtil
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -22,7 +25,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val userName = SharedPreferenceUtil.getUserName(this)
 
-        userNameTextField.text ="Hola $userName"
+        userNameTextField.text ="Hola,  $userName"
+
+        val userNameFromFile = FileFunctions.getFileValue(Constants.LOG_FILE_NAME,this).toString()
+
+        userNameResultFile.text =userNameFromFile
 
         logoutButton.setOnClickListener(this)
 

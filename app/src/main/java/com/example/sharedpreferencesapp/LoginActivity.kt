@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.example.sharedpreferencesapp.utils.Constants
+import com.example.sharedpreferencesapp.utils.FileFunctions
 import com.example.sharedpreferencesapp.utils.SharedPreferenceUtil
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -15,6 +17,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var passwordText: EditText
     private lateinit var fullNameText: EditText
     private lateinit var resultNameText: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,20 +35,30 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
-        val userName = userNameText.text.toString().trim()
-        val fullName = fullNameText.text.toString().trim()
-        val password = passwordText.text.toString().trim()
+
+        if(view == loginButton){
+
+            val userName = userNameText.text.toString().trim()
+            val fullName = fullNameText.text.toString().trim()
+            val password = passwordText.text.toString().trim()
+
+            FileFunctions.appendFileValue(
+                Constants.LOG_FILE_NAME,
+                userName,
+                this
+            )
 
 
-        SharedPreferenceUtil.saveUserName(this, userName)
-        SharedPreferenceUtil.saveFullName(this, fullName)
-        SharedPreferenceUtil.savePassword(this, password)
+            SharedPreferenceUtil.saveUserName(this, userName)
+            SharedPreferenceUtil.saveFullName(this, fullName)
+            SharedPreferenceUtil.savePassword(this, password)
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
 
 
+        }
 
 
 
